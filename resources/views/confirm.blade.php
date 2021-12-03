@@ -6,8 +6,8 @@
     padding: 5px 40px;
   }
 
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
+  tr:nth-child(4) td {
+    padding: 10px;
   }
 
   td {
@@ -15,39 +15,90 @@
     background-color: #EEEEEE;
     text-align: center;
   }
+
+  input {
+    padding: 5px;
+  }
 </style>
 
-@section('title', '確認ページ')
+@section('title', '内容確認')
 
 @section('content')
 <table>
+  @csrf
   <tr>
-    <th>お名前</th>
-    <th>性別</th>
-    <th>メールアドレス</th>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>建物名</th>
-    <th>ご意見</th>
-    <th></th>
+    <th>
+      お名前
+    </th>
+    <td>
+      <input type="text" name="fullname">
+    </td>
   </tr>
-
-  <!--以下出し方に問題あり12/3-->
-
-
+  <tr>
+    <th>
+      性別
+    </th>
+    <td>
+      <input type="text" name="gender">
+    </td>
+  </tr>
+  <tr>
+    <th>
+      メールアドレス
+    </th>
+    <td>
+      <input type="text" name="email">
+    </td>
+  </tr>
+  <tr>
+  <tr>
+    <th>
+      郵便番号
+    </th>
+    <td>
+      <input type="text" name="postcode">
+    </td>
+  </tr>
+  <tr>
+  <tr>
+    <th>
+      住所
+    </th>
+    <td>
+      <input type="text" name="address">
+    </td>
+  </tr>
+  <tr>
+  <tr>
+    <th>
+      建物名
+    </th>
+    <td>
+      <input type="text" name="building_name">
+    </td>
+  </tr>
+  <tr>
+  <tr>
+    <th>
+      ご意見
+    </th>
+    <td>
+      <input type="text" name="opinion" style="width:675px;">
+    </td>
+  </tr>
 </table>
 
 
-  <button onclick="location.href='/thanks'">
+<button onclick="location.href='/thanks'">
   送信する
-  </button>
-  <button onclick="location.href='/'">
-    入力内容修正
-  </button>
+</button>
+<button onclick="location.href='/'">
+  入力内容修正
+</button>
 
-  @endsection
+@endsection
 
 
-  </body>
+</body>
 
-  </html>
+</html>

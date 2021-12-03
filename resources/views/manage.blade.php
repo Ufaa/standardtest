@@ -25,7 +25,7 @@
 @section('title', '管理システム')
 
 @section('content')
-<form action="{{route('search')}}" method="post">
+<form action="manage" method="post">
   {{csrf_field()}}
   @if ($errors->has('fullname'))
   <tr>
@@ -67,7 +67,11 @@
       {{Str::limit($item->opinion, 25, '…' )}}
     </td>
     <td>
-      <form action="/manage" method="POST">
+
+
+      <form action="manage" method="post">
+        @csrf
+        @method('DELETE')
         <button type="submit" class="btn btn-danger">削除</button>
       </form>
     </td>

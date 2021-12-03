@@ -14,16 +14,12 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/manage', [ContactController::class, 'index'])->name('index');
+Route::get('/manage', [ContactController::class, 'index']);
 Route::get('/', [ContactController::class, 'add']);
 Route::post('/', [ContactController::class, 'create']);
 Route::get('/confirm', [ContactController::class, 'confirm']);
-/*Route::resource('/', ContactController::class);
-Route::get('/manage', [ContactController::class, 'delete']);
-Route::post('/manage', [ContactController::class, 'remove']);*/
 Route::get('/thanks', [ContactController::class, 'show']);
-Route::post('/manage', [ContactController::class, 'search'])->name('search');
+Route::post('/manage', [ContactController::class, 'search']);
+Route::post('/manage', [ContactController::class, 'destroy']);
+/*Route::post('/manage', [ContactController::class, 'remove']);*/
+
