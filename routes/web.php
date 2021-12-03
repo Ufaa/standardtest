@@ -26,3 +26,4 @@ Route::get('/confirm', [ContactController::class, 'confirm']);
 Route::get('/manage', [ContactController::class, 'delete']);
 Route::post('/manage', [ContactController::class, 'remove']);*/
 Route::get('/thanks', [ContactController::class, 'show']);
+Route::post('/manage', [ContactController::class, 'search'])->name('search');

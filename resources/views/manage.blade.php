@@ -25,6 +25,20 @@
 @section('title', '管理システム')
 
 @section('content')
+<form action="{{route('search')}}" method="post">
+  {{csrf_field()}}
+  @if ($errors->has('fullname'))
+  <tr>
+    <th></th>
+    <td>
+      <p>{{$errors->first('fullname')}}</p>
+    </td>
+  </tr>
+  @endif
+  <input type="text" name="contact" value="{{$input ?? ''}}">
+  <input type="submit" value="見つける">
+</form>
+
 {{ $items->links() }}
 <table>
   <tr>
@@ -50,7 +64,7 @@
       {{$item->email}}
     </td>
     <td>
-      {{$item->opinion}}
+      {{Str::limit($item->opinion, 25, '…' )}}
     </td>
     <td>
       <form action="/manage" method="POST">

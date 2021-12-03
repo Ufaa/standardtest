@@ -73,4 +73,20 @@ class ContactController extends Controller
     {
         return view('thanks');
     }
+
+    public function search(Request $request)
+    {
+
+        // $items = Contact::where('fullname', 'LIKE', "%{$request->fullname}%")->paginate(10);
+        // //dd($todo);
+        // return view('manage')->with('items', $items);
+
+        $items = Contact::where('fullname', 'LIKE', "%{$request->input}%")->paginate(10);
+        //dd($todo);
+        $param = [
+            'input' => $request->input,
+            'items' => $items
+        ];
+        return view('manage', $param);
+    }
 }
