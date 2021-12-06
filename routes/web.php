@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Models\Contact;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,19 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/manage', [ContactController::class, 'index']);
-Route::get('/', [ContactController::class, 'add']);
-Route::post('/', [ContactController::class, 'create']);
-Route::get('/confirm', [ContactController::class, 'confirm']);
-Route::get('/thanks', [ContactController::class, 'show']);
-Route::post('/manage', [ContactController::class, 'search']);
-Route::post('/manage', [ContactController::class, 'destroy']);
-/*Route::post('/manage', [ContactController::class, 'remove']);*/
+
+Route::get('/', [ContactController::class, 'show']);
+Route::post('/post', [ContactController::class, 'post'])->name('post');
+Route::get('/confirm', [ContactController::class, 'confirm'])->name('confirm');
+Route::post('/confirm', [ContactController::class, 'send'])->name('send');
+Route::get('/thanks', [ContactController::class, 'complete'])->name('complete');
+
+
+//管理ページ
+Route::get('/manage', [ContactController::class, 'index'])->name('index');
+Route::post('/search', [ContactController::class, 'search'])->name('search');
+Route::post('/delete', [ContactController::class, 'delete'])->name('delete');
+Route::post('/destroy', [ContactController::class, 'destroy'])->name('destroy');
+
+
 

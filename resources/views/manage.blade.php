@@ -25,18 +25,79 @@
 @section('title', '管理システム')
 
 @section('content')
-<form action="manage" method="post">
+<form action="{{route('search')}}" method="post">
   {{csrf_field()}}
-  @if ($errors->has('fullname'))
+  @if ($errors->has('content'))
   <tr>
     <th></th>
     <td>
-      <p>{{$errors->first('fullname')}}</p>
+      <p>{{$errors->first('content')}}</p>
     </td>
   </tr>
   @endif
-  <input type="text" name="contact" value="{{$input ?? ''}}">
-  <input type="submit" value="見つける">
+  <input type="text" name="content" value="{{$input ?? ''}}">
+  <input type="submit" value="検索">
+</form>
+
+@if (@isset($item))
+<table>
+
+  <tr>
+    <th>Data</th>
+  </tr>
+  <tr>
+    <td>
+      {{$item->getDetail()}}
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>お名前</th>
+    <td>
+      {{$item->fullname}}
+    </td>
+  </tr>
+  <tr>
+    <th>性別</th>
+    <td>
+      {{$item->gender}}
+    </td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td>
+      {{$item->email}}
+    </td>
+  </tr>
+  <tr>
+    <th>郵便番号</th>
+    <td>
+      {{$item->postcode}}
+    </td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>
+      {{$item->address}}
+    </td>
+  </tr>
+  <tr>
+    <th>建物名</th>
+    <td>
+      {{$item->building_name}}
+    </td>
+  </tr>
+  <tr>
+    <th>ご意見</th>
+    <td>
+      {{$item->opinion}}
+    </td>
+  </tr>
+
+</table>
+@endif
+
 </form>
 
 {{ $items->links() }}
@@ -67,12 +128,9 @@
       {{Str::limit($item->opinion, 25, '…' )}}
     </td>
     <td>
-
-
-      <form action="manage" method="post">
+      <form action="{{ route('destroy', ['id' => $item->id]) }}" method="post">
         @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">削除</button>
+        <button class="button-delete">削除</button>
       </form>
     </td>
   </tr>

@@ -19,82 +19,129 @@
   input {
     padding: 5px;
   }
+
+  .give {
+    display: none;
+  }
 </style>
 
 @section('title', '内容確認')
 
 @section('content')
-<table>
+
+
+
+
+<form method="post" action="{{ route('send') }}">
   @csrf
-  <tr>
-    <th>
-      お名前
-    </th>
-    <td>
-      <input type="text" name="fullname">
-    </td>
-  </tr>
-  <tr>
-    <th>
-      性別
-    </th>
-    <td>
-      <input type="text" name="gender">
-    </td>
-  </tr>
-  <tr>
-    <th>
-      メールアドレス
-    </th>
-    <td>
-      <input type="text" name="email">
-    </td>
-  </tr>
-  <tr>
-  <tr>
-    <th>
-      郵便番号
-    </th>
-    <td>
-      <input type="text" name="postcode">
-    </td>
-  </tr>
-  <tr>
-  <tr>
-    <th>
-      住所
-    </th>
-    <td>
-      <input type="text" name="address">
-    </td>
-  </tr>
-  <tr>
-  <tr>
-    <th>
-      建物名
-    </th>
-    <td>
-      <input type="text" name="building_name">
-    </td>
-  </tr>
-  <tr>
-  <tr>
-    <th>
-      ご意見
-    </th>
-    <td>
-      <input type="text" name="opinion" style="width:675px;">
-    </td>
-  </tr>
-</table>
+
+  <table>
+    <tr>
+      <th>お名前</th>
+      <td>
+        {{ $input["fullname"] }}
+      </td>
+    </tr>
+    <tr>
+      <th>性別</th>
+      <td>
+        {{$input["gender"] }}
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        {{$input["email"] }}
+      </td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td>
+        {{$input["postcode"] }}
+      </td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td>
+        {{$input["address"] }}
+      </td>
+    </tr>
+    <tr>
+      <th>建物名</th>
+      <td>
+        {{$input["building_name"] }}
+      </td>
+    </tr>
+    <tr>
+      <th>ご意見</th>
+      <td>
+        {{$input["opinion"] }}
+      </td>
+    </tr>
+
+  </table>
+
+  <input name="back" type="submit" value="戻る" />
+</form>
+
+<form method="post" action="{{ route('send') }}">
+  @csrf
+
+  <div class="give">
 
 
-<button onclick="location.href='/thanks'">
-  送信する
-</button>
-<button onclick="location.href='/'">
-  入力内容修正
-</button>
+    <table>
+      <tr>
+        <th>お名前</th>
+        <td>
+          {{ $input["fullname"] }}
+        </td>
+      </tr>
+      <tr>
+        <th>性別</th>
+        <td>
+          {{$input["gender"] }}
+        </td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td>
+          {{$input["email"] }}
+        </td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td>
+          {{$input["postcode"] }}
+        </td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td>
+          {{$input["address"] }}
+        </td>
+      </tr>
+      <tr>
+        <th>建物名</th>
+        <td>
+          {{$input["building_name"] }}
+        </td>
+      </tr>
+      <tr>
+        <th>ご意見</th>
+        <td>
+          {{$input["opinion"] }}
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+
+  <input name="give" type="submit" value="送信" />
+</form>
+
+
 
 @endsection
 

@@ -10,7 +10,7 @@
 
 <body>
   <p>ご意見いただきありがとうございました。</p>
-  <button type="button" onclick="location.href='/'">トップページへ</button>
+  <button type="button" onclick="location.href='/'">お問い合わせページへ</button>
 </body>
 
 </html>

@@ -30,7 +30,18 @@
 @section('title', 'お問い合わせ')
 
 @section('content')
-<form action="/" method="POST">
+
+@if ($errors->any())
+<div style="color:red;">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
+<form action="{{ route('post') }}" method="post">
   <table>
     @csrf
     <tr>
@@ -38,7 +49,7 @@
         お名前
       </th>
       <td>
-        <input type="text" name="fullname">
+        <input type="text" name="fullname" value="{{ old('fullname') }}" />
       </td>
     </tr>
     <tr>
@@ -46,7 +57,7 @@
         性別
       </th>
       <td>
-        <input type="text" name="gender">
+        <input type="text" name="gender" value="{{ old('gender') }}" />
       </td>
     </tr>
     <tr>
@@ -54,7 +65,7 @@
         メールアドレス
       </th>
       <td>
-        <input type="text" name="email">
+        <input type="text" name="email" value="{{ old('email') }}" />
       </td>
     </tr>
     <tr>
@@ -63,7 +74,7 @@
         郵便番号
       </th>
       <td>
-        <input type="text" name="postcode">
+        <input type="text" name="postcode" value="{{ old('postcode') }}" />
       </td>
     </tr>
     <tr>
@@ -72,7 +83,7 @@
         住所
       </th>
       <td>
-        <input type="text" name="address">
+        <input type="text" name="address" value="{{ old('address') }}" />
       </td>
     </tr>
     <tr>
@@ -81,7 +92,7 @@
         建物名
       </th>
       <td>
-        <input type="text" name="building_name">
+        <input type="text" name="building_name" value="{{ old('building_name') }}" />
       </td>
     </tr>
     <tr>
@@ -90,16 +101,16 @@
         ご意見
       </th>
       <td>
-        <input type="text" name="opinion" style="width:675px;">
+        <input type="text" name="opinion" value="{{ old('opinion') }}" style="width:675px;" />
       </td>
     </tr>
     <tr>
       <th></th>
       <td>
-        <button>確認</button>
-      </td>
-    </tr>
-  </table>
+        <input class="btn btn-primary" type="submit" value="確認" />
+</td>
+</tr>
+</table>
 </form>
 @endsection
 
