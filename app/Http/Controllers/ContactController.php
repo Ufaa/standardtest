@@ -15,12 +15,7 @@ class ContactController extends Controller
         //$items = DB::select('select * from contacts');
         return view('manage', ['items' => $items]);
     }
-    // public function add()
-    // {
-    //     return view('inquiry');
-    // }
-
-    //
+ 
     private $formItems = ["fullname", "gender", "email", "postcode", "address", "building_name", "opinion"];
 
     private $validator = [
@@ -99,51 +94,19 @@ class ContactController extends Controller
         return view('thanks');
     }
 
-
-
-    // public function create(Request $request)
-    // {
-    //     $input = [
-    //         'fullname' => $request->fullname,
-    //         'gender' => $request->gender,
-    //         'email' => $request->email,
-    //         'postcode' => $request->postcode,
-    //         'address' => $request->address,
-    //         'building_name' => $request->building_name,
-    //         'opinion' => $request->opinion,
-    //     ];
-    //     DB::insert('insert into contacts (fullname, gender, email, postcode, address, building_name, opinion) values (:fullname, :gender, :email, :postcode, :address, :building_name, :opinion)', $input);
-    //     return view('thanks');
-    // }
-
-    // public function confirm()
-    // {
-    //     $items = Contact::orderBy('created_at', 'desc')-> paginate(1);
-    //     //$items = Contact::Paginate(1);
-    //     //$items = DB::select('select * from contacts');
-    //     return view('confirm', ['items' => $items]);
-    // }
-
-    // public function send(Request $request)
-    // {
-    // }
-
-    // public function show()
-    // {
-    //     return view('thanks');
-    // }
-
     public function search(Request $request)
     {
         $items = Contact::where('fullname', 'LIKE', "%{$request->content}%")->paginate(10);
         //dd($todo);
         return view('manage')->with('items', $items);
     }
+
     public function delete(Request $request)
     {
         Contact::find($request->id)->delete();
         return redirect('/');
     }
+
     public function destroy(Request $request)
     {
         Contact::find($request->id)->delete();

@@ -15,11 +15,15 @@ use App\Models\Contact;
 |
 */
 
-
+//問い合わせページ
 Route::get('/', [ContactController::class, 'show']);
 Route::post('/post', [ContactController::class, 'post'])->name('post');
+
+//確認ページ
 Route::get('/confirm', [ContactController::class, 'confirm'])->name('confirm');
 Route::post('/confirm', [ContactController::class, 'send'])->name('send');
+
+//完了ページ
 Route::get('/thanks', [ContactController::class, 'complete'])->name('complete');
 
 
