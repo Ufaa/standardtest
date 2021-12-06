@@ -6,6 +6,7 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use Illuminate\Pagination\Paginator;
 
 class ContactController extends Controller
 {
@@ -111,6 +112,11 @@ class ContactController extends Controller
     {
         Contact::find($request->id)->delete();
         return redirect('manage');
+    }
+
+    public function boot()
+    {
+        Paginator::useBootstrap();
     }
 
 

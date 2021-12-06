@@ -1,25 +1,30 @@
 @extends('layouts.default')
 <style>
   th {
-    background-color: #289ADC;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 5px 40px;
+    border-bottom: 1px solid black;
+    text-align: left;
   }
 
   tr:nth-child(odd) td {
-    background-color: #FFFFFF;
+    background-color: white;
   }
 
   td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
+    padding: 10px 40px;
+    background-color: white;
   }
 
   svg.w-5.h-5 {
     /*paginateメソッドの矢印の大きさ調整のために追加*/
     width: 30px;
     height: 30px;
+  }
+
+  table {
+    margin-top: 70px;
   }
 </style>
 @section('title', '管理システム')
@@ -37,6 +42,7 @@
   @endif
   <input type="text" name="content" value="{{$input ?? ''}}">
   <input type="submit" value="検索">
+  <button type="button" onclick="location.href='/manage'">リセット</button>
 </form>
 
 @if (@isset($item))
@@ -100,7 +106,7 @@
 
 </form>
 
-{{ $items->links() }}
+{{ $items->links('pagination::tailwind') }}
 <table>
   <tr>
     <th>ID</th>

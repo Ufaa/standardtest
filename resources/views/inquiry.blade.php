@@ -63,7 +63,7 @@
         性別<span>※</span>
       </th>
       <td>
-        <input type="text" name="gender" value="{{ old('gender') }}" style="width:675px; height:40px;" />
+        <input type="text" name="gender" value="{{ old('gender') }}"  placeholder="男性は「0」を、女性は「1」を入力してください" style="width:675px; height:40px;" />
       </td>
     </tr>
     <tr>
