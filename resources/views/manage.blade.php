@@ -26,6 +26,52 @@
   table {
     margin-top: 70px;
   }
+
+  CSSResult Skip Results Iframe EDIT ON body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .css-fukidashi {
+    padding: 0;
+    margin: 0;
+  }
+
+  .text {
+    position: relative;
+  }
+
+  .fukidashi {
+    display: none;
+    width: 700px;
+    position: absolute;
+    top: 30px;
+    left: 700px;
+    padding: 16px;
+    border-radius: 5px;
+    background: #33cc99;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .fukidashi:after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: -19px;
+    margin-left: 10px;
+    border: solid transparent;
+    border-color: rgba(51, 204, 153, 0);
+    border-top-color: #33cc99;
+    border-width: 10px;
+    pointer-events: none;
+    content: " ";
+  }
+
+  .text:hover+.fukidashi {
+    display: block;
+  }
 </style>
 @section('title', '管理システム')
 
@@ -131,7 +177,12 @@
       {{$item->email}}
     </td>
     <td>
-      {{Str::limit($item->opinion, 25, '…' )}}
+
+      <div class="css-fukidashi">
+        <p class="text">{{Str::limit($item->opinion, 25, '…' )}}</p>
+        <p class="fukidashi">{{($item->opinion)}}</p>
+      </div>
+
     </td>
     <td>
       <form action="{{ route('destroy', ['id' => $item->id]) }}" method="post">
