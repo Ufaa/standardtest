@@ -45,7 +45,7 @@
     display: none;
     width: 600px;
     position: absolute;
-    top: 50px;
+    top: 200px;
     left: 700px;
     padding: 16px;
     border-radius: 5px;
@@ -72,49 +72,78 @@
   .text:hover+.fukidashi {
     display: block;
   }
+
+  .search-area {
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 20px 0;
+
+  }
+
+  .button-area {
+    text-align: center;
+  }
+
+  .find {
+      background-color: black;
+      color: white;
+      padding: 5px 40px;
+      border-radius: 5px;
+      margin: 10px;
+    }
+
+  .reset {
+    border: none;
+    background-color: white;
+    border-bottom: 1px solid;
+  }
 </style>
 @section('title', '管理システム')
 
 @section('content')
-<form action="{{route('search')}}" method="post">
-  {{csrf_field()}}
-  @if ($errors->has('content'))
-  <tr>
-    <th></th>
-    <td>
-      <p>{{$errors->first('content')}}</p>
-    </td>
-  </tr>
-  @endif
-  お名前<input type="text" name="content" value="{{$input ?? ''}}">
+<div class="search-area">
+  <form action="{{route('search')}}" method="post">
+    {{csrf_field()}}
+    @if ($errors->has('content'))
+    <tr>
+      <th></th>
+      <td>
+        <p>{{$errors->first('content')}}</p>
+      </td>
+    </tr>
+    @endif
+    　　お名前　　<input type="text" name="content" value="{{$input ?? ''}}" style=" width: 400px; height:40px; border-radius:5px;">
 
-  性別<label>
-    <input type="radio" name="gender" value="0,1" checked>
-    全て
-  </label>
-  <label>
-    <input type="radio" name="gender" value="0">
-    男性
-  </label>
-  <label>
-    <input type="radio" name="gender" value="1">
-    女性
-  </label>
+    　　性別<label>
+      <input type="radio" name="gender" value="0,1" checked>
+      全て
+    </label>
+    <label>
+      <input type="radio" name="gender" value="0">
+      男性
+    </label>
+    <label>
+      <input type="radio" name="gender" value="1">
+      女性
+    </label>
 
-  <br>
+    <br>
 
-  登録日<input type="date" name="start">
-  　〜　<input type="date" name="end">
+    　　登録日　　<input type="date" name="start" style=" width: 400px; height:40px; margin-top:20px; border-radius:5px;">
+    　〜　<input type="date" name="end" style=" width: 400px; height:40px; border-radius:5px;">
 
-  <br>
-<!--【要修正】
+    <br>
+    <!--【要修正】
   メールアドレス<input type="text" name="content" value="{{$input ?? ''}}">
 -->
-  <br>
-
-  <input type="submit" value="検索">
-  <button type="button" onclick="location.href='/manage'">リセット</button>
-</form>
+    <br>
+    <div class="button-area">
+      <input class="find" type="submit" value="検索">
+      <br>
+      <button class="reset" type="button" onclick="location.href='/manage'">リセット</button>
+    </div>
+  </form>
+</div>
 
 @if (@isset($item))
 <table>
