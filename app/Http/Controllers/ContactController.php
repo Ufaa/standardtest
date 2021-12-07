@@ -22,7 +22,7 @@ class ContactController extends Controller
     private $validator = [
         "fullname" => "required",
         "gender" => "required",
-        "email" => "required",
+        "email" => 'required | email:strict,rfc,dns', // stricとdnsを付けて不正メールアドレスをはじく
         "postcode" => "required",
         "address" => "required",
         "opinion" => "required",
