@@ -86,7 +86,32 @@
     </td>
   </tr>
   @endif
-  <input type="text" name="content" value="{{$input ?? ''}}">
+  お名前<input type="text" name="content" value="{{$input ?? ''}}">
+
+  性別<label>
+    <input type="radio" name="gender" value="0,1" checked>
+    全て
+  </label>
+  <label>
+    <input type="radio" name="gender" value="0">
+    男性
+  </label>
+  <label>
+    <input type="radio" name="gender" value="1">
+    女性
+  </label>
+
+  <br>
+
+  登録日<input type="date" name="start">
+  　〜　<input type="date" name="end">
+
+  <br>
+<!--【要修正】
+  メールアドレス<input type="text" name="content" value="{{$input ?? ''}}">
+-->
+  <br>
+
   <input type="submit" value="検索">
   <button type="button" onclick="location.href='/manage'">リセット</button>
 </form>
