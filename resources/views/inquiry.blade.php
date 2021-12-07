@@ -28,6 +28,11 @@
   span {
     color: red;
   }
+
+  .example {
+    color: gray;
+    font-size: 10px;
+  }
 </style>
 @section('title', 'お問い合わせ')
 
@@ -55,7 +60,9 @@
     <tr>
       <th>
       </th>
-      <td>例)山田 太郎</td>
+      <td>
+        <p class="example">例)山田 太郎</p>
+      </td>
     </tr>
     <tr>
       <th>
@@ -70,13 +77,21 @@
         @endif
       </th>
       <td>
-        <input type="text" name="gender" value="{{ old('gender') }}" placeholder="男性は「0」を、女性は「1」を入力してください" style="width:675px; height:40px;" />
+        <label>
+          <input type="radio" name="gender" value="0" checked>
+          男性
+        </label>
+        <label>
+          <input type="radio" name="gender" value="1">
+          女性
+        </label>
+        <!-- <input type="text" name="gender" value="{{ old('gender') }}" placeholder="男性は「0」を、女性は「1」を入力してください" style="width:675px; height:40px;" />-->
       </td>
     </tr>
     <tr>
       <th>
       </th>
-      <td>0:男性、1:女性</td>
+      <td></td>
     </tr>
     <tr>
       <th>
@@ -97,7 +112,9 @@
     <tr>
       <th>
       </th>
-      <td>例)test@example.com</td>
+      <td>
+        <p class="example">例)test@example.com</p>
+      </td>
     </tr>
     <tr>
       <th>
@@ -119,7 +136,9 @@
     <tr>
       <th>
       </th>
-      <td>例)123-4567</td>
+      <td>
+        <p class="example">例)123-4567（半角ハイフンあり）</p>
+      </td>
     </tr>
     <tr>
       <th>
@@ -140,7 +159,9 @@
     <tr>
       <th>
       </th>
-      <td>例)東京都渋谷区千駄ヶ谷1-2-3</td>
+      <td>
+        <p class="example">例)東京都渋谷区千駄ヶ谷1-2-3</p>
+      </td>
     </tr>
     <tr>
       <th>
@@ -152,7 +173,9 @@
     </tr>
     <tr>
       <th></th>
-      <td>例)千駄ヶ谷マンション101</td>
+      <td>
+        <p class="example">例)千駄ヶ谷マンション101</p>
+      </td>
     </tr>
     <tr>
       <th>
@@ -180,6 +203,7 @@
   </table>
 </form>
 @endsection
+
 
 </body>
 

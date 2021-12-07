@@ -22,8 +22,8 @@ class ContactController extends Controller
     private $validator = [
         "fullname" => "required",
         "gender" => "required",
-        "email" => 'required | email:strict,rfc,dns', // stricとdnsを付けて不正メールアドレスをはじく
-        "postcode" => "required",
+        "email" => 'required | email:strict,rfc,dns ', // stricとdnsを付けて不正メールアドレスをはじく
+        "postcode" => 'required | regex:/^[0-9]{3}-[0-9]{4}$/', //3桁-4桁以外を弾く
         "address" => "required",
         "opinion" => "required",
     ];
