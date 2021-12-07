@@ -43,9 +43,9 @@
 
   .fukidashi {
     display: none;
-    width: 700px;
+    width: 600px;
     position: absolute;
-    top: 30px;
+    top: 50px;
     left: 700px;
     padding: 16px;
     border-radius: 5px;

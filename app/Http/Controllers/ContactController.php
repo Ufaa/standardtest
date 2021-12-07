@@ -97,7 +97,12 @@ class ContactController extends Controller
 
     public function search(Request $request)
     {
-        $items = Contact::where('fullname', 'LIKE', "%{$request->content}%")->paginate(10);
+        $items = Contact::
+            where('fullname', 'LIKE', "%{$request->content}%")
+            ->orwhere('email', 'LIKE', "%{$request->content}%")
+            ->orwhere('gender', 'LIKE', "%{$request->content}%")
+            ->orwhere('created_at', 'LIKE', "%{$request->content}%")
+                ->paginate(10);
         //dd($todo);
         return view('manage')->with('items', $items);
     }
