@@ -25,7 +25,7 @@ class ContactController extends Controller
         "email" => 'required | email:strict,dns,spoof', // stricとdnsを付けて不正メールアドレスをはじく
         "postcode" => 'required | regex:/^[0-9]{3}-[0-9]{4}$/', //3桁-4桁以外を弾く
         "address" => "required",
-        "opinion" => "required",
+        "opinion" => "required| max:120",
     ];
 
     function show()

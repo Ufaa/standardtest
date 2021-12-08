@@ -2,6 +2,7 @@
     .pagination-area {
         position: relative;
     }
+
     .count-area {
         position: absolute;
         left: 0;
@@ -9,7 +10,12 @@
 
     .page-area {
         position: absolute;
+        margin:16px 0 ;
         right: 0;
+    }
+
+    .page-area svg {
+        border: 1px solid black;
     }
 </style>
 
@@ -47,7 +53,7 @@
                 <span class="font-medium">{{ $paginator->firstItem() }}</span>
                 件 ~
                 <span class="font-medium">{{ $paginator->lastItem() }}</span>
-                件 を表示
+                件 
             </p>
         </div>
 

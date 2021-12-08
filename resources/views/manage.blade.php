@@ -19,8 +19,8 @@
 
   svg.w-5.h-5 {
     /*paginateメソッドの矢印の大きさ調整のために追加*/
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 20px;
   }
 
   table {
@@ -233,7 +233,7 @@
     <td>
 
       <div class="css-fukidashi">
-        <p class="text">{{Str::limit($item->opinion, 25, '…' )}}</p>
+        <p class="text">{{Str::limit($item->opinion, 50, '…' )}}</p>
         <p class="fukidashi">{{($item->opinion)}}</p>
       </div>
 

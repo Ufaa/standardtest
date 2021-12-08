@@ -33,6 +33,11 @@
     color: gray;
     font-size: 10px;
   }
+
+  .address {
+    width: 675px;
+    height: 40px;
+  }
 </style>
 @section('title', 'お問い合わせ')
 
@@ -129,8 +134,9 @@
         @endif
       </th>
       <td>
+        <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
         〒
-        <input type="text" name="postcode" value="{{ old('postcode') }}" style="width:655px; height:40px;" />
+        <input type="text" name="postcode" value="{{ old('postcode') }}" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" style="width:655px; height:40px;" />
       </td>
     </tr>
     <tr>
@@ -153,7 +159,7 @@
         @endif
       </th>
       <td>
-        <input type="text" name="address" value="{{ old('address') }}" style="width:675px; height:50px;" />
+        <input type="text" class="address" name="address" value="{{ old('address') }}" 　style="width:675px; height:50px;" />
       </td>
     </tr>
     <tr>
@@ -190,7 +196,8 @@
         @endif
       </th>
       <td>
-        <input type=" text" name="opinion" value="{{ old('opinion') }}" style="width:675px; height:200px;" />
+        <textarea name="opinion" value="{{ old('opinion') }}" style="width:675px; height:200px; ">{{ old('opinion') }}</textarea>
+
       </td>
     </tr>
     <tr>
