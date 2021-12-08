@@ -30,6 +30,7 @@ Route::get('/thanks', [ContactController::class, 'complete'])->name('complete');
 //管理ページ
 Route::get('/manage', [ContactController::class, 'index'])->name('index');
 Route::post('/search', [ContactController::class, 'search'])->name('search');
+
 Route::post('/delete', [ContactController::class, 'delete'])->name('delete');
 Route::post('/destroy', [ContactController::class, 'destroy'])->name('destroy');
 

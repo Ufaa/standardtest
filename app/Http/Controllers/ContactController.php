@@ -106,6 +106,7 @@ class ContactController extends Controller
         //dd($todo);
         return view('manage')->with('items', $items);
     }
+    
 
     public function delete(Request $request)
     {
