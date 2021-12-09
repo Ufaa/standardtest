@@ -134,9 +134,10 @@
         @endif
       </th>
       <td>
-        <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+        <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8">
+        </script>
         〒
-        <input type="text" name="postcode" value="{{ old('postcode') }}" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" style="width:655px; height:40px;" />
+        <input type="text" id="foo" name="postcode" value="{{ old('postcode') }}" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" style="width:655px; height:40px;" />
       </td>
     </tr>
     <tr>
