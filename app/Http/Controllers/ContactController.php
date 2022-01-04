@@ -97,15 +97,30 @@ class ContactController extends Controller
 
     public function search(Request $request)
     {
-        $items = Contact::
-            where('fullname', 'LIKE', "%{$request->content}%")
-            ->orwhere('email', 'LIKE', "%{$request->content}%")
-            ->orwhere('gender', 'LIKE', "%{$request->content}%")
-            ->orwhere('created_at', 'LIKE', "%{$request->content}%")
-                ->paginate(10);
-        //dd($todo);
-        return view('manage')->with('items', $items);
+        $name = $request->name;
+        $gender = $request->gender;
+        $email = $request->email;
+        // $start_at = $request->start;
+        // $end_at = $request->end;
+
+        if (
+            !is_null($name) && is_null($gender) && is_null($email) //&& (is_null($start_at) || is_null($end_at))
+        ) {
+            $items = Contact::where('fullname', 'LIKE', "%{$request->content}%")->paginate(10);
+            return view('manage')->with('items', $items);
+        } else if (
+            is_null($name) && !is_null($gender) && is_null($email)
+        ) {
+            $items = Contact::where('gender', 'LIKE', "%{$request->content}%");
+            return view('manage')->with('items', $items);
+        } else if (
+            is_null($name) && is_null($gender) && !is_null($email)
+        ) {
+            $items = Contact::where('email', 'LIKE', "%{$request->content}%");
+            return view('manage')->with('items', $items);
+        }
     }
+
     
 
     public function delete(Request $request)
