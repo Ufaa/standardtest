@@ -97,26 +97,27 @@ class ContactController extends Controller
 
     public function search(Request $request)
     {
-        $name = $request->name;
+        $name = $request->fullname;
         $gender = $request->gender;
         $email = $request->email;
         // $start_at = $request->start;
         // $end_at = $request->end;
+        //dd($request->all());
 
         if (
             !is_null($name) && is_null($gender) && is_null($email) //&& (is_null($start_at) || is_null($end_at))
         ) {
-            $items = Contact::where('fullname', 'LIKE', "%{$request->content}%")->paginate(10);
+            $items = Contact::where('fullname', 'LIKE', "%{$request->fullname}%")->paginate(10);
             return view('manage')->with('items', $items);
         } else if (
             is_null($name) && !is_null($gender) && is_null($email)
         ) {
-            $items = Contact::where('gender', 'LIKE', "%{$request->content}%");
+            $items = Contact::where('gender', 'LIKE', "%{$request->gender}%");
             return view('manage')->with('items', $items);
         } else if (
             is_null($name) && is_null($gender) && !is_null($email)
         ) {
-            $items = Contact::where('email', 'LIKE', "%{$request->content}%");
+            $items = Contact::where('email', 'LIKE', "%{$request->email}%");
             return view('manage')->with('items', $items);
         }
     }
