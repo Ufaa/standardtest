@@ -115,15 +115,15 @@
     　　お名前　　<input type="text" name="content" value="{{$input ?? ''}}" style=" width: 400px; height:40px; border-radius:5px;">
 
     　　性別<label>
-      <input type="radio" name="gender" value="0,1" checked>
+      <input type="radio" name="content" value="0,1" checked>
       全て
     </label>
     <label>
-      <input type="radio" name="gender" value="0">
+      <input type="radio" name="content" value="0">
       男性
     </label>
     <label>
-      <input type="radio" name="gender" value="1">
+      <input type="radio" name="content" value="1">
       女性
     </label>
 
